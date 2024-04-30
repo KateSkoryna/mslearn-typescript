@@ -3,15 +3,12 @@
 
 /*  EXERCISE 1
     TODO: Declare a new function type for the sortDescending and sortAscending functions. */
-    
+type sortFunction = (a: number, b: number) => number;
 
 /*  TODO: Convert the sortDescending and sortAscending functions to arrow 
     functions. */
-
-/*  sortDescending is a comparison function that tells the sort method how to sort 
-    numbers in descending order */
-function sortDescending(a, b) {
-if (a > b) {
+const sortDescending: sortFunction = (a, b) => {
+    if (a > b) {
     return -1;
 } else if (b > a) {
     return 1;
@@ -20,10 +17,8 @@ if (a > b) {
 }
 }
 
-/*  sortDescending is a comparison function that tells the sort method how to sort 
-    numbers in ascending order. */
-function sortAscending(a, b) {
-if (a > b) {
+const sortAscending: sortFunction = (a, b) => {
+    if (a > b) {
     return 1;
 } else if (b > a) {
     return -1;
@@ -38,33 +33,37 @@ if (a > b) {
 
 /*  TODO: Update the BuildArray function. */
 
-function buildArray(items, sortOrder) {
-    let randomNumbers = [];
-    let nextNumber;
+function buildArray(items: number, sortOrder: 'ascending' | 'descending'): Array<number> {
+    let randomNumbers: Array<number> = [];
+    let nextNumber: number;
     for (let counter = 0; counter < items; counter++) {
         nextNumber = Math.ceil(Math.random() * (100 - 1));
         if (randomNumbers.indexOf(nextNumber) === -1) {
-          randomNumbers.push(nextNumber);
+        randomNumbers.push(nextNumber);
         } else {
-          counter--;
+        counter--;
         }
     }
     if (sortOrder === 'ascending') {
-      return randomNumbers.sort(sortAscending);
+    return randomNumbers.sort(sortAscending);
     } else {
-      return randomNumbers.sort(sortDescending);
+    return randomNumbers.sort(sortDescending);
     }
 }
 
 let myArray1 = buildArray(12, 'ascending');
 let myArray2 = buildArray(8, 'descending');
+console.log(myArray1);
+console.log(myArray2);
 
 /*  EXERCISE 2
     TODO: Update the LoanCalculator function. */
 
-function loanCalculator (principle, interestRate, months) {
-    let interest = interestRate / 1200;   // Calculates the monthly interest rate
-    let payment;
+function loanCalculator (principle: number, interestRate: number, months = 12): string {
+    let interest: number = interestRate / 1200;   // Calculates the monthly interest rate
+    let payment: number;
     payment = principle * interest / (1 - (Math.pow(1/(1 + interest), months)));
     return payment.toFixed(2);
 }
+
+console.log(loanCalculator(30000, 5));
