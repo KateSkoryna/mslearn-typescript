@@ -1,6 +1,6 @@
 /*  Module 7: Working with external libraries
     Lab Start */
-
+import { calculateConventionalLoanPayment, calculateInterestOnlyLoanPayment } from "./module07_loan-programs";
 /*  TODO Add the import statement. */
 
 /*  TODO Update the function calls. */
