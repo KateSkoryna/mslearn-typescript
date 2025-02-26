@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="module08_exercise.ts"/>
 var AllGreetings;
 (function (AllGreetings) {
     let Greetings;

@@ -1,20 +1,21 @@
 "use strict";
-/// <reference path="module08_exercise-2.ts"/>
-// namespace Greetings {
-//       export function returnGreeting (greeting: string) {
-//         console.log(`The message from namespace Greetings is ${greeting}.`);
-//     }
-// }
-// namespace GreetingsWithLength {
-//      export function returnGreeting (greeting: string) {
-//         let greetingLength = getLength(greeting);
-//         console.log(`The message from namespace GreetingsWithLength is ${greeting}. It is ${greetingLength} characters long.`);
-//     }
-//     function getLength(message: string): number {
-//         return message.length
-//     }
-// }
-// Greetings.returnGreeting('Hi');         // OK
-// GreetingsWithLength.returnGreeting('Hola');  // OK
-let x = AllGreetings.Greetings.returnGreeting('Bonjour'); // OK
-console.log(x);
+var Greetings;
+(function (Greetings) {
+    function returnGreeting(greeting) {
+        console.log(`The message from namespace Greetings is ${greeting}.`);
+    }
+    Greetings.returnGreeting = returnGreeting;
+})(Greetings || (Greetings = {}));
+var GreetingsWithLength;
+(function (GreetingsWithLength) {
+    function returnGreeting(greeting) {
+        let greetingLength = getLength(greeting);
+        console.log(`The message from namespace GreetingsWithLength is ${greeting}. It is ${greetingLength} characters long.`);
+    }
+    GreetingsWithLength.returnGreeting = returnGreeting;
+    function getLength(message) {
+        return message.length;
+    }
+})(GreetingsWithLength || (GreetingsWithLength = {}));
+Greetings.returnGreeting('Hi'); // OK
+GreetingsWithLength.returnGreeting('Hola'); // OK
